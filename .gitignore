@@ -1,0 +1,10 @@
+# Dependências (se um dia instalar algo com npm)
+node_modules/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Configuração local da Netlify CLI
+.netlify/
+.env

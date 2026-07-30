@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+
+<html lang="pt-br">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Forja — Sites Gerados por IA</title>
+</head>
+
+<body>
+
+    <div class="brasas" aria-hidden="true"></div>
+
+    <p class="etiqueta">🔥 FORJA — Gerador de Sites com Inteligência Artificial</p>
+
+    <h1>
+        Sua ideia vira site
+        <br>
+        <span>em um golpe de prompt</span>
+    </h1>
+
+    <p class="subtitulo">Descreva o seu negócio e veja a Forja aquecer o prompt e entregar uma página pronta em
+        segundos.</p>
+
+    <div class="caixa-entrada">
+        <textarea class="texto-pagina"
+            placeholder="Descreva seu negócio. Ex: Cafeteria aconchegante no centro da cidade..."></textarea>
+
+        <button onclick="gerarCodigo()">🔥 Forjar</button>
+    </div>
+
+    <div class="caixa-resultado">
+
+        <div class="painel painel-codigo">
+            <span class="painel-titulo">⌨️ Código forjado</span>
+            <p class="bloco-codigo"></p>
+        </div>
+
+        <div class="painel painel-site">
+            <span class="painel-titulo">👁️ Pré-visualização</span>
+            <iframe class="bloco-site"></iframe>
+        </div>
+
+    </div>
+</body>
+<script src="js/scripts.js"></script>
+
+</html>
