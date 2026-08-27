@@ -64,7 +64,7 @@ netlify dev
 Na primeira vez, ela vai pedir para você linkar o site (ou rodar sem
 linkar) e definir `GROQ_API_KEY` localmente — ela pergunta ou você pode
 criar um arquivo `.env` com `GROQ_API_KEY=sua_chave` (esse arquivo já está
-no `.gitignore`, então não vai para o Git).
+no `.gitignore`, então não vai para o Git)
 
 ## Sobre a segurança da chave
 
