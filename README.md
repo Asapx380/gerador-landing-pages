@@ -1,73 +1,45 @@
-# 🔥 Forja — Gerador de Sites com IA
+# ⚡ Forja — Gerador de Landing Pages com IA
 
-Gerador de landing pages que transforma uma descrição de negócio em uma
-página HTML/CSS completa, usando a API da [Groq](https://groq.com/)
-(modelo `llama-3.3-70b-versatile`).
+> **Do briefing ao primeiro rascunho em segundos.**  
+Gere landing pages prontas (HTML + CSS) a partir de uma breve descrição do negócio usando a API da [Groq](https://groq.com/) (modelo `openai/gpt-oss-120b`).
 
-## Como funciona
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](#)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](#)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#)
+[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](#)
 
-1. Você descreve o seu negócio numa frase (ex: *"Cafeteria aconchegante no
-   centro da cidade"*).
-2. O front-end envia esse texto para uma **função serverless**
-   (`netlify/functions/gerar.js`), que roda no servidor da Netlify.
-3. Essa função chama a IA usando uma chave guardada como variável de
-   ambiente — a chave nunca aparece no navegador nem no código-fonte.
-4. A IA responde com HTML + CSS prontos, que aparecem lado a lado: o código
-   gerado e a pré-visualização ao vivo (dentro de um `<iframe>`).
+ **[Acesse a versão ao vivo do Forja](https://forjaai.netlify.app/)**
 
-## Tecnologias
+---
 
-- HTML, CSS e JavaScript puros no front-end (sem frameworks)
-- Netlify Functions (Node.js) como back-end, para esconder a chave de API
-- API da Groq (compatível com a API da OpenAI)
+##  Funcionalidades
 
-## Estrutura do projeto
+-  **Geração Ultrarrápida**: Respostas em segundos utilizando a infraestrutura da Groq Cloud.
+-  **Prévia ao Vivo**: Visualize o site gerado e edite o código HTML/CSS lado a lado.
+-  **Cópia em 1 Clique**: Exporte o código gerado facilmente.
+-  **Segurança Total**: Sua chave de API protegida em ambiente Serverless.
 
-```
+---
+
+##  Como funciona
+
+1. O usuário descreve a ideia do negócio e o público-alvo no formulário.
+2. O front-end envia a requisição para a Netlify Function (`netlify/functions/gerar.js`).
+3. A função chama a API da Groq com a chave armazenada de forma segura em variáveis de ambiente.
+4. O HTML e CSS gerados são renderizados dinamicamente na prévia ao vivo.
+
+---
+
+##  Estrutura do Projeto
+
+```text
 .
-├── index.html
-├── netlify.toml
+├── index.html              # Interface do gerador
+├── netlify.toml            # Configuração de build da Netlify
 ├── css/
-│   └── style.css
+│   └── style.css           # Estilos e temas (Dark Mode / Glassmorphism)
 ├── js/
-│   └── scripts.js
+│   └── scripts.js          # Lógica do front-end e interações
 └── netlify/
     └── functions/
-        └── gerar.js       # roda no servidor — tem acesso à chave
-```
-
-## Como publicar (deploy)
-
-1. Suba este repositório para o GitHub normalmente (`git push`).
-2. Crie uma conta gratuita em [netlify.com](https://www.netlify.com/).
-3. No painel da Netlify: **Add new site → Import an existing project** e
-   escolha este repositório no GitHub.
-4. A Netlify já vai detectar o `netlify.toml` e a pasta de functions
-   sozinha — não precisa mexer em nada na configuração de build.
-5. Antes (ou depois) do deploy, vá em **Site configuration → Environment
-   variables** e adicione:
-   - **Key**: `GROQ_API_KEY`
-   - **Value**: sua chave da Groq (gerada em
-     [console.groq.com/keys](https://console.groq.com/keys))
-6. Clique em **Deploy site**. Pronto — o site fica no ar com a chave
-   totalmente escondida do navegador.
-
-## Rodar localmente (opcional)
-
-Para testar no seu computador antes de publicar, instale a CLI da Netlify:
-
-```bash
-npm install -g netlify-cli
-netlify dev
-```
-
-Na primeira vez, ela vai pedir para você linkar o site (ou rodar sem
-linkar) e definir `GROQ_API_KEY` localmente — ela pergunta ou você pode
-criar um arquivo `.env` com `GROQ_API_KEY=sua_chave` (esse arquivo já está
-no `.gitignore`, então não vai para o Git)
-
-## Sobre a segurança da chave
-
-Diferente da primeira versão deste projeto (onde a chave ficava direto no
-JavaScript do navegador), agora ela mora **só no servidor** — quem abrir o
-"Inspecionar" do navegador não consegue mais vê-la.
+        └── gerar.js        # Serverless function com integração da Groq API
