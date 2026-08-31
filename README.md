@@ -1,45 +1,78 @@
-# ⚡ Forja — Gerador de Landing Pages com IA
+# Forja AI — Gerador de Landing Pages
 
-> **Do briefing ao primeiro rascunho em segundos.**  
-Gere landing pages prontas (HTML + CSS) a partir de uma breve descrição do negócio usando a API da [Groq](https://groq.com/) (modelo `openai/gpt-oss-120b`).
+Do briefing ao primeiro rascunho em segundos.
 
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](#)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](#)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](#)
-[![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](#)
+O Forja AI é uma aplicação web que gera landing pages completas (HTML + CSS) em tempo real a partir de uma breve descrição do negócio e público-alvo, utilizando a API da Groq Cloud.
 
- **[Acesse a versão ao vivo do Forja](https://forjaai.netlify.app/)**
+[Acesse a versão ao vivo do Forja AI](https://forjaai.netlify.app/)
 
 ---
 
-##  Funcionalidades
+## Tecnologias Utilizadas
 
--  **Geração Ultrarrápida**: Respostas em segundos utilizando a infraestrutura da Groq Cloud.
--  **Prévia ao Vivo**: Visualize o site gerado e edite o código HTML/CSS lado a lado.
--  **Cópia em 1 Clique**: Exporte o código gerado facilmente.
--  **Segurança Total**: Sua chave de API protegida em ambiente Serverless.
-
----
-
-##  Como funciona
-
-1. O usuário descreve a ideia do negócio e o público-alvo no formulário.
-2. O front-end envia a requisição para a Netlify Function (`netlify/functions/gerar.js`).
-3. A função chama a API da Groq com a chave armazenada de forma segura em variáveis de ambiente.
-4. O HTML e CSS gerados são renderizados dinamicamente na prévia ao vivo.
+- Front-end: JavaScript (ES6+), HTML5, CSS3 (Glassmorphism & Dark Mode)
+- Back-end / Serverless: Netlify Functions (Node.js)
+- AI / LLM: Groq Cloud API (modelo Llama 3.3 / GPT-OSS-120b)
+- Hospedagem e Deploy: Netlify
 
 ---
 
-##  Estrutura do Projeto
+## Funcionalidades
+
+- Geração Ultrarrápida: Respostas geradas em poucos segundos utilizando a infraestrutura da Groq Cloud.
+- Prévia ao Vivo: Visualização imediata do site gerado com edição de código HTML/CSS lado a lado.
+- Cópia em 1 Clique: Exportação rápida do código gerado para uso direto em novos projetos.
+- Segurança em Ambiente Serverless: Chave da API protegida no lado do servidor via Netlify Functions.
+
+---
+
+## Como Funciona a Arquitetura
+
+1. O usuário preenche os detalhes do negócio no formulário do front-end.
+2. O front-end envia uma requisição POST para a Netlify Function (`/netlify/functions/gerar.js`).
+3. A função serverless chama a API da Groq utilizando a chave de API armazenada de forma segura nas variáveis de ambiente.
+4. O HTML e o CSS retornados pela IA são renderizados dinamicamente no painel de prévia.
+
+---
+
+## Estrutura do Projeto
 
 ```text
 .
-├── index.html              # Interface do gerador
+├── index.html              # Interface principal do gerador
 ├── netlify.toml            # Configuração de build da Netlify
 ├── css/
 │   └── style.css           # Estilos e temas (Dark Mode / Glassmorphism)
 ├── js/
-│   └── scripts.js          # Lógica do front-end e interações
+│   └── scripts.js          # Lógica do front-end e manipulação do DOM
 └── netlify/
     └── functions/
-        └── gerar.js        # Serverless function com integração da Groq API
+        └── gerar.js        # Serverless Function com integração da Groq API
+```
+
+---
+
+## Execução Local
+
+### Pré-requisitos
+- Node.js instalado
+- Netlify CLI (`npm install -g netlify-cli`)
+
+### Passo a passo
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/Asapx380/gerador-landing-pages.git
+   cd gerador-landing-pages
+   ```
+
+2. Configure a variável de ambiente:
+   Crie um arquivo `.env` na raiz do projeto contendo a sua chave de API da Groq:
+   ```env
+   GROQ_API_KEY=sua_chave_aqui
+   ```
+
+3. Inicie o ambiente de desenvolvimento local:
+   ```bash
+   netlify dev
+   ```
